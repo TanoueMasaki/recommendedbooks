@@ -1,0 +1,38 @@
+header{
+    
+    width: 100%;
+    text-align: right;
+}
+header div.loginHeader{
+    margin: 20px 20px 0 0;
+    font-size: 20px;
+}
+main{
+    width: 100%;
+    text-align: center;
+}
+main img{
+    width: 25%;
+    margin: 20px 0 20px 0;
+    border-radius: 100px;
+}
+main h1{
+    font-size: 50px;
+    color: #92846c;;
+    margin-bottom: 20px;
+}
+main h2{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+main p{
+    font-size: 15px;
+    margin: 10px 0 10px 0;
+}
+main div.loginMain{
+    margin: 0 0 20px 0;
+    font-size: 30px;
+}
+main div.loginMain a{
+    margin: 0 10px 0 10px;
+}
