@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MainController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,13 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// トップ画面
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// ダッシュボード
+Route::get('/dashboard',[MainController::class, 'find'])
+->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/dashboard',[MainController::class, 'index'])
+->middleware(['auth', 'verified'])->name('dashboard.updata');
+
+// ユーザー限定ページ
+Route::get('/userOnly',[MainController::class, 'userOnly'])
+->middleware(['auth', 'verified'])->name('userOnly');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

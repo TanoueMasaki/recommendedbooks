@@ -10,7 +10,9 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        <link rel="stylesheet" href="{{ asset('/css/reset.css')  }}">
+		<link rel="stylesheet" href="{{ asset('/css/style_app.css')  }}">
+        
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -31,6 +33,21 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <!-- Page Footer -->
+            <footer>
+                <hr>
+                <p>SNSからもお気軽にご連絡下さい</p>
+                <p>よければフォローもお願いします</p>
+                <ul>
+                    <li>
+                        <a href="https://x.com/tanoue_m_0612" target="_top"><img src="./data/image/logo-black.png"></a>
+                        <a href="https://instagram.com/masakitanoue" target="_top"><img src="./data/image/Instagram.png"></a>
+                        <a href="https://www.threads.net/@masakitanoue" target="_top"><img src="./data/image/threads.png"></a>
+                    </li>
+                </ul>
+                <p class="copylight"> &copy; Masaki Tanoue 2023 </p>
+            </footer>
         </div>
     </body>
 </html>
