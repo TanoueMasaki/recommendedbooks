@@ -12,6 +12,13 @@ class RecommendedBook extends Model
 
     protected $table = 'recommended_books';
 
+    //保存したいカラム名（複数）を設定しておく
+    protected $fillable = ['book_name','book_author','book_publisher','book_price','book_url','comment','publishing_settings','contributor_id','post_date','post_time']; 
+
+    // タイムスタンプはなしで(Unknown column 'updated_at'が出ないように)
+    // created_atとupdated_atが自動で入るようになっている為
+    public $timestamps = false;
+
     use HasFactory;
 
     public function getData()

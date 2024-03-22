@@ -22,9 +22,9 @@ Route::get('/', function () {
 });
 
 // ダッシュボード
-Route::get('/dashboard',[MainController::class, 'find'])
+Route::get('/dashboard',[MainController::class, 'showGet'])
 ->middleware(['auth', 'verified'])->name('dashboard');
-Route::post('/dashboard',[MainController::class, 'index'])
+Route::post('/dashboard',[MainController::class, 'showPost'])
 ->middleware(['auth', 'verified'])->name('dashboard.updata');
 
 // ユーザー限定ページ
