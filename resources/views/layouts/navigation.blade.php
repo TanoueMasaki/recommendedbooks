@@ -17,7 +17,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('userOnly')" :active="request()->routeIs('userOnly')">
+                    <x-nav-link :href="route('privateGet')" :active="request()->routeIs('privateGet')">
                         {{ __('user only page') }}
                     </x-nav-link>
                 </div>
@@ -77,7 +77,7 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('userOnly')" :active="request()->routeIs('userOnly')">
+            <x-responsive-nav-link :href="route('privateGet')" :active="request()->routeIs('privateGet')">
                 {{ __('user only page') }}
             </x-responsive-nav-link>
         </div>

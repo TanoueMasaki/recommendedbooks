@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     // 一覧表示（view）
-    public function showGet(Request $request){
+    public function publicGet(Request $request){
         // $items = RecommendedBook_view::contributorId($request->user()->id)->get();
         $items = RecommendedBook_view::publishingSet()->get();
 
@@ -19,8 +19,19 @@ class MainController extends Controller
          ]);
     }
 
+    // 一覧表示（view）
+    public function privateGet(Request $request){
+        $items = RecommendedBook_view::contributorId($request->user()->id)->get();
+        
+
+        return view('userOnly.index')
+        ->with([
+            "items" => $items
+         ]);
+    }
+
     // データの追加(INSERT)
-    public function showPost(Request $request){
+    public function privateGetPost(Request $request){
         RecommendedBook::create([  
             "book_name" => $request->book_name,
             "book_author" => $request->book_author,
@@ -32,13 +43,12 @@ class MainController extends Controller
             "post_date" => date("Y-m-d"),
             "post_time" => date("H:i:s"),
             "contributor_id" =>  $request-> contributor_id
-          ]);  
+        ]);  
         
-        return redirect('dashboard');
-    }
-
-    public function userOnly(){
-        
-        return view('userOnly.index');
+        $items = RecommendedBook_view::contributorId($request->user()->id)->get();
+        return view('userOnly.index')
+        ->with([
+            "items" => $items
+            ]);
     }
 }

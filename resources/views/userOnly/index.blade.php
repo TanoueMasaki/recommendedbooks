@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <form action="/laravel/recommendedbooks/public/dashboard" method="post">
+    <form action="/laravel/recommendedbooks/public/userOnly" method="post">
         <!-- これいる -->
         {{ csrf_field() }}
 
@@ -34,4 +34,37 @@
         <input type="radio" name="publishing_settings" value="public">Public
         <input type="submit" name="bookDataAdd" value="投稿する">
     </form>
+    <table>
+		<tr>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>出版社</th>
+            <th>価格</th>
+            <th>URL</th>
+            <th>コメント</th>
+            <th>投稿日</th>
+            <th>投稿時間</th>
+            <th>閲覧制限</th>
+		</tr>
+		@foreach($items as $item)
+		<tr>
+			<td>{{$item->book_name}}</td>
+            <td>{{$item->book_author}}</td>
+            <td>{{$item->book_publisher}}</td>
+            <td>{{$item->book_price}}円</td>
+
+            <!-- URLが未入力なら空白にする -->
+            @if($item->book_url === null)
+                <td></td>
+                @else
+                <td><a href=<?=$item->book_url ?> target="_top">link</a></td>
+            @endif
+        
+            <td>{{$item->comment}}</td>
+            <td>{{$item->post_date}}</td>
+            <td>{{$item->post_time}}</td>
+            <td>{{$item->publishing_settings}}</td>
+		</tr>
+        @endforeach
+	</table>
 </x-app-layout>

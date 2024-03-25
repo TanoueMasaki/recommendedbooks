@@ -22,14 +22,16 @@ Route::get('/', function () {
 });
 
 // ダッシュボード
-Route::get('/dashboard',[MainController::class, 'showGet'])
+Route::get('/dashboard',[MainController::class, 'publicGet'])
 ->middleware(['auth', 'verified'])->name('dashboard');
-Route::post('/dashboard',[MainController::class, 'showPost'])
-->middleware(['auth', 'verified'])->name('dashboard.updata');
 
 // ユーザー限定ページ
-Route::get('/userOnly',[MainController::class, 'userOnly'])
-->middleware(['auth', 'verified'])->name('userOnly');
+Route::get('/userOnly',[MainController::class, 'privateGet'])
+->middleware(['auth', 'verified'])->name('privateGet');
+Route::post('/userOnly',[MainController::class, 'privateGetPost'])
+->middleware(['auth', 'verified'])->name('privateGetPost');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
