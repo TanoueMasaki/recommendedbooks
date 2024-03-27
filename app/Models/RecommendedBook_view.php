@@ -17,9 +17,9 @@ class RecommendedBook_view extends Model
     }
     //スコープの定義
     public function scopeContributorId($query,$id){
-        return $query->where('contributor_id',$id);
+        return $query->where('contributor_id',$id)->orderBy('post_date', 'desc')->orderBy('post_time', 'desc');
     }
     public function scopePublishingSet($query){
-        return $query->where('publishing_settings',"public");
+        return $query->where('publishing_settings',"public")->orderBy('post_date', 'desc')->orderBy('post_time', 'desc');
     }
 }

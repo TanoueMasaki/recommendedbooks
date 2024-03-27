@@ -1,0 +1,50 @@
+input{
+    width: 100%;
+}
+
+input.input{
+    border: none;
+}
+
+table.input_table{
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 60%;
+}
+
+table.main_table{
+    width: 100%;
+}
+table.main_table th,table.main_table td{
+    padding: 5px 5px 0 5px;
+}
+
+table.main_table td.center{
+    text-align: center;
+    vertical-align: middle;
+}
+
+table th{
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-collapse: collapse;
+    position: sticky;
+    background: #f2f2f2;
+    top: 0;
+    left: 0;
+}
+table td {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+div.scroll_table{
+    margin: 0 auto;
+    width: 60%;
+    height: 200px;
+    overflow:auto;
+    border: 1px solid black;
+
+}

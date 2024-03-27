@@ -32,6 +32,11 @@ class MainController extends Controller
 
     // データの追加(INSERT)
     public function privateGetPost(Request $request){
+
+        if($request->book_name==="" || !isset($_book_name) || $request->book_name===null){
+            exit;
+        }
+
         RecommendedBook::create([  
             "book_name" => $request->book_name,
             "book_author" => $request->book_author,
