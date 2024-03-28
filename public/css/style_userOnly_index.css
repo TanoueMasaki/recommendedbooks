@@ -6,6 +6,10 @@ input.input{
     border: none;
 }
 
+form select{
+    border: none;
+}
+
 table.input_table{
     border: 1px solid black;
     margin: 0 auto;
@@ -21,6 +25,10 @@ table.main_table th,table.main_table td{
 
 table.main_table td.center{
     text-align: center;
+    vertical-align: middle;
+}
+
+table.main_table td.middle{
     vertical-align: middle;
 }
 
@@ -43,8 +51,11 @@ table td {
 div.scroll_table{
     margin: 0 auto;
     width: 60%;
-    height: 200px;
+    max-height: 500px;
     overflow:auto;
     border: 1px solid black;
+}
 
+tbody img{
+    width: 50px;
 }

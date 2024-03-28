@@ -31,6 +31,9 @@ Route::get('/userOnly',[MainController::class, 'privateGet'])
 Route::post('/userOnly',[MainController::class, 'privateGetPost'])
 ->middleware(['auth', 'verified'])->name('privateGetPost');
 
+Route::post('/userOnly/delete',[MainController::class, 'delete'])
+->middleware(['auth', 'verified'])->name('delete');
+
 
 
 Route::middleware('auth')->group(function () {

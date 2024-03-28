@@ -3,7 +3,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-           ユーザー限定ページ
+           データの削除
         </h2>
     </x-slot>
 
@@ -11,68 +11,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    ここはユーザー限定のスペースです（サンプルページ）
+                データの削除
                 </div>
             </div>
         </div>
     </div>
-
-    <form action="/laravel/recommendedbooks/public/userOnly" method="post">
-        <!-- これいる -->
-        <!-- {{ csrf_field() }} -->
-        @csrf
-        
-        <!-- ログインユーザーのuser idを取得して渡す(hiddenで表示はしない) -->
-        <input type="hidden" name="contributor_id" value=<?=Auth::user()->id ?>>
-        <table class="input_table">
-            <tr>
-                <th>タイトル</th>
-                <th>著者</th>
-                <th>出版社</th>
-                <th>分類</th>
-                <th>価格</th>
-                <th>URL</th>
-                <th>コメント</th>
-                <th>公開設定</th>
-            </tr>
-
-            <tr>
-                <td><input class="input" type="text" name="book_name" required></td>
-                <td><input class="input" type="text" name="book_author" required></td>
-                <td><input class="input" type="text" name="book_publisher" required></td>
-                <td>
-                    <!-- 分類選択肢 -->
-                    <select name="classification" required>
-                        <option value="" hidden></option>
-                        <option value="コミック">コミック</option>
-                        <option value="絵本">絵本</option>
-                        <option value="女性ファッション誌">女性ファッション誌</option>
-                        <option value="同人誌">同人誌</option>
-                        <option value="名言集">名言集</option>
-                        <option value="音楽誌">音楽誌</option>
-                        <option value="その他">その他</option>
-                    </select>
-                </td>
-                <td><input class="input" type="number" min="0" name="book_price"></td>
-                <td><input class="input" type="url" name="book_url"></td>
-                <td><input class="input" type="text" name="comment"></td>
-                <td>
-                    <input type="radio" name="publishing_settings" value="private" required>Private
-                    <input type="radio" name="publishing_settings" value="public" required>Public
-                </td>
-            </tr>
-        </table>
-        <input class="button" type="submit" name="bookDataAdd" value="投稿する">
-        <input class="button" type="reset" value="リセット">
-    </form>
-
-    <form action="/laravel/recommendedbooks/public/userOnly/delete" method="post">
-        @csrf
-        <div class="scroll_table">
+    
+    <div class="scroll_table">
             <table class="main_table">
                 <thead>
                     <tr>
-                        <th></th>
+                        
                         <th></th>
                         <th>タイトル</th>
                         <th>著者</th>
@@ -90,7 +39,7 @@
                 @foreach($items as $item)
                 <tbody>
                     <tr>
-                        <td><input type="checkbox" name="checkedId[]" value=<?=$item->id?>></td>
+                        
 
                         <!-- 分類ごとにイメージを決定する -->
                         <td class="center">
@@ -132,9 +81,5 @@
                 </tbody>
             </table>
         </div>
-
-        <input class="button" type="submit" name="bookDataDelete" value="削除">
-        <input class="button" type="submit" name="bookDataUpdate" value="編集">
-        <input class="button" type="reset" value="リセット">
-    </form>
+        
 </x-app-layout>
