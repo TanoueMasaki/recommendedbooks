@@ -26,11 +26,15 @@ class MainController extends Controller
         
         // 分類イメージ画像を配列に入れる
         $images = [
+            asset('/data/image/no_image.png'),
             asset('/data/image/comic.png'),
             asset('/data/image/doujinshi.png'),
-            asset('/data/image/no_image.png')
+            asset('/data/image/ehon.png'),
+            asset('/data/image/fashion.png'),
+            asset('/data/image/meigensyu.png'),
+            asset('/data/image/music.png')
         ];
-        $imageNum = 2;
+        $imageNum = 0;
         
 
         return view('userOnly.index')
@@ -66,30 +70,68 @@ class MainController extends Controller
         return redirect()->route('privateGet');
     }
 
-    // データの削除(DELETE)
-    public function delete(Request $request){
+    // データの削除or更新(DELETE or UPDATE)
+    public function deleteOrUpdate(Request $request){
 
-        $checkedId = $request->checkedId;
-        
-        // 複数条件での検索はwhereInで出来る
-        $items = RecommendedBook_view::all()->whereIn('id', $checkedId);
+        if($request->checkedId===null){
+            return redirect()->route('privateGet')
+            ->with('errorMessage','チェックして下さい');
+        }
 
-        // 分類イメージ画像を配列に入れる
-        $images = [
-            asset('/data/image/comic.png'),
-            asset('/data/image/doujinshi.png'),
-            asset('/data/image/no_image.png')
-        ];
-        $imageNum = 2;
+        // 削除ボタンが押されたら
+        if ($request->has('bookDataDelete')) {
+            $checkedId = $request->checkedId;
+            // セッションに$checkedIdを一旦保存しておく
+            $request->session()->put('checkedId',$checkedId);
+            
+            // 複数条件での検索はwhereInで出来る
+            $items = RecommendedBook_view::all()->whereIn('id', $checkedId);
 
-        return view('userOnly.delete')
-        ->with([
-            "items" => $items,
-            "images" => $images,
-            "imageNum" => $imageNum
-         ]);
+            // 分類イメージ画像を配列に入れる
+            $images = [
+                asset('/data/image/no_image.png'),
+                asset('/data/image/comic.png'),
+                asset('/data/image/doujinshi.png'),
+                asset('/data/image/ehon.png'),
+                asset('/data/image/fashion.png'),
+                asset('/data/image/meigensyu.png'),
+                asset('/data/image/music.png')
+            ];
+            $imageNum = 0;
 
-        // リダイレクトはルートのnameを入れる
-        // return redirect()->route('privateGet');
+            return view('userOnly.delete')
+            ->with([
+                "items" => $items,
+                "images" => $images,
+                "imageNum" => $imageNum
+            ]);
+
+        // 更新ボタンが押されたら
+        } elseif ($request->has('bookDataUpdate')) {
+            $checkedId = $request->checkedId;
+            // セッションに$checkedIdを一旦保存しておく
+            $request->session()->put('checkedId',$checkedId);
+            
+            // 複数条件での検索はwhereInで出来る
+            $items = RecommendedBook_view::all()->whereIn('id', $checkedId);
+
+            return view('userOnly.update')
+            ->with([
+                "items" => $items
+            ]);
+        } 
+    }
+
+    // データの削除実行(REMOVE)
+    public function remove(Request $request){
+        // セッションに'checkedId'があれば削除する
+        if($request->session()->has('checkedId')){
+            $checkedId = $request->session()->get('checkedId');
+            $items = RecommendedBook::whereIn('id', $checkedId)->delete();
+            // セッションの'checkedId'を消去する
+            $request->session()->forget('checkedId');
+        }
+            
+        return redirect()->route('privateGet');
     }
 }

@@ -12,7 +12,7 @@ class RecommendedBook extends Model
 
     protected $table = 'recommended_books';
 
-    //保存したいカラム名（複数）を設定しておく
+    //データ挿入の許可をするカラムを指定(許可しない設定をする場合は$guardedにする)
     protected $fillable = ['book_name','book_author','book_publisher','book_price','book_url','comment','publishing_settings','contributor_id','post_date','post_time','classification']; 
 
     // タイムスタンプはなしで(Unknown column 'updated_at'が出ないように)

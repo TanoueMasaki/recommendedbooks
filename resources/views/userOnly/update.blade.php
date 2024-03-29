@@ -3,7 +3,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-           データの削除
+           データの更新
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                以下のレコードが削除されます。本当に削除しますか？
+                以下のレコードを更新します。更新内容を入力して下さい。
                 </div>
             </div>
         </div>
@@ -39,47 +39,13 @@
             @foreach($items as $item)
             <tbody>
                 <tr>
-                    <!-- 分類ごとにイメージを決定する -->
-                    <td class="center">
-                        <?php 
-                            $imageNum; 
-                            switch($item->classification){
-                                case "その他":
-                                    $imageNum = 0;
-                                break;
-                                case "コミック":
-                                    $imageNum = 1;
-                                break;
-                                case "同人誌":
-                                    $imageNum = 2;
-                                break;
-                                case "絵本":
-                                    $imageNum = 3;
-                                break;
-                                case "女性ファッション誌":
-                                    $imageNum = 4;
-                                break;
-                                case "名言集":
-                                    $imageNum = 5;
-                                break;
-                                case "音楽誌":
-                                    $imageNum = 6;
-                                break;
-                            }
-                        ?>
-                        <img id="image" src=<?=$images[$imageNum]?> alt="image">
-                    </td>
+                    <td class="center">{{$item->id}}</td>
                     <td class="middle">{{$item->book_name}}</td>
                     <td class="center">{{$item->book_author}}</td>
                     <td class="middle">{{$item->book_publisher}}</td>
                     <td class="center">{{$item->classification}}</td>
                     <td class="center">{{$item->book_price}}円</td>
-                    <!-- URLが未入力なら空白にする -->
-                    @if($item->book_url === null)
-                        <td></td>
-                        @else
-                        <td class="center"><a href=<?=$item->book_url ?> target="_top">link</a></td>
-                    @endif               
+                    <td class="center"><{{$item->book_url}}></td>             
                     <td class="middle">{{$item->comment}}</td>
                     <td class="center">{{$item->post_date}}</td>
                     <td class="center">{{$item->post_time}}</td>

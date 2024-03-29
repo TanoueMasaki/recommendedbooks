@@ -41,9 +41,9 @@
                 <p>よければフォローもお願いします</p>
                 <ul>
                     <li>
-                        <a href="https://x.com/tanoue_m_0612" target="_top"><img src="./data/image/logo-black.png"></a>
-                        <a href="https://instagram.com/masakitanoue" target="_top"><img src="./data/image/Instagram.png"></a>
-                        <a href="https://www.threads.net/@masakitanoue" target="_top"><img src="./data/image/threads.png"></a>
+                        <a href="https://x.com/tanoue_m_0612" target="_top"><img src="{{ asset('/data/image/logo-black.png')}}"></a>
+                        <a href="https://instagram.com/masakitanoue" target="_top"><img src="{{ asset('/data/image/Instagram.png')}}"></a>
+                        <a href="https://www.threads.net/@masakitanoue" target="_top"><img src="{{ asset('/data/image/threads.png')}}"></a>
                     </li>
                 </ul>
                 <p class="copylight"> &copy; Masaki Tanoue 2023 </p>

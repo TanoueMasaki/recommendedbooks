@@ -31,8 +31,10 @@ Route::get('/userOnly',[MainController::class, 'privateGet'])
 Route::post('/userOnly',[MainController::class, 'privateGetPost'])
 ->middleware(['auth', 'verified'])->name('privateGetPost');
 
-Route::post('/userOnly/delete',[MainController::class, 'delete'])
-->middleware(['auth', 'verified'])->name('delete');
+Route::post('/userOnly/deleteOrUpdate',[MainController::class, 'deleteOrUpdate'])
+->middleware(['auth', 'verified'])->name('deleteOrUpdate');
+Route::post('/userOnly/remove',[MainController::class, 'remove'])
+->middleware(['auth', 'verified'])->name('remove');
 
 
 

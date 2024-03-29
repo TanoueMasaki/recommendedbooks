@@ -66,7 +66,11 @@
         <input class="button" type="reset" value="リセット">
     </form>
 
-    <form action="/laravel/recommendedbooks/public/userOnly/delete" method="post">
+    @if(session('errorMessage')===null)
+    @else
+    <p id="errorMessage">{{session('errorMessage')}}</p>
+    @endif
+    <form action="/laravel/recommendedbooks/public/userOnly/deleteOrUpdate" method="post">
         @csrf
         <div class="scroll_table">
             <table class="main_table">
@@ -90,20 +94,32 @@
                 @foreach($items as $item)
                 <tbody>
                     <tr>
-                        <td><input type="checkbox" name="checkedId[]" value=<?=$item->id?>></td>
+                        <td><input type="checkbox" name="checkedId[]" value=<?=$item->id?> ></td>
 
                         <!-- 分類ごとにイメージを決定する -->
                         <td class="center">
                             <?php $imageNum; 
                                 switch($item->classification){
-                                    case "コミック":
+                                    case "その他":
                                         $imageNum = 0;
                                     break;
-                                    case "同人誌":
+                                    case "コミック":
                                         $imageNum = 1;
                                     break;
-                                    case "その他":
+                                    case "同人誌":
                                         $imageNum = 2;
+                                    break;
+                                    case "絵本":
+                                        $imageNum = 3;
+                                    break;
+                                    case "女性ファッション誌":
+                                        $imageNum = 4;
+                                    break;
+                                    case "名言集":
+                                        $imageNum = 5;
+                                    break;
+                                    case "音楽誌":
+                                        $imageNum = 6;
                                     break;
                                 }
                             ?>
@@ -137,4 +153,8 @@
         <input class="button" type="submit" name="bookDataUpdate" value="編集">
         <input class="button" type="reset" value="リセット">
     </form>
+
+    
+
+    
 </x-app-layout>
