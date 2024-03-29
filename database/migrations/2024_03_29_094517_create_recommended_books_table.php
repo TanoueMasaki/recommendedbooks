@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('recommended_books2', function (Blueprint $table) {
+        Schema::create('recommended_books', function (Blueprint $table) {
             $table->id();
-            $table->string('book_name',50)->nullable();
-            $table->string('book_author',10)->nullable();
-            $table->string('book_publisher',50)->nullable();
-            $table->integer('book_price');
-            $table->string('book_url',200);
-            $table->string('comment',200);
-            $table->string('publishing_settings',255)->nullable();
-            $table->date('post_date')->nullable();
-            $table->time('post_time')->nullable();
-            $table->integer('contributor_id')->nullable();
-            $table->string('classification',50)->nullable();
+            $table->string('book_name',50);
+            $table->string('book_author',10);
+            $table->string('book_publisher',50);
+            $table->integer('book_price')->nullable();
+            $table->string('book_url',200)->nullable();
+            $table->string('comment',200)->nullable();
+            $table->string('publishing_settings',255);
+            $table->date('post_date');
+            $table->time('post_time');
+            $table->integer('contributor_id');
+            $table->string('classification',50);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('recommended_books2');
+        Schema::dropIfExists('recommended_books');
     }
 };

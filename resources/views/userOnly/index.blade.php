@@ -37,10 +37,10 @@
             </tr>
 
             <tr>
-                <td><input class="input" type="text" name="book_name" required></td>
-                <td><input class="input" type="text" name="book_author" required></td>
-                <td><input class="input" type="text" name="book_publisher" required></td>
-                <td>
+                <td class="long"><input class="input" type="text" name="book_name" required></td>
+                <td class="short"><input class="input" type="text" name="book_author" required></td>
+                <td class="short"><input class="input" type="text" name="book_publisher" required></td>
+                <td id="classification" class="short">
                     <!-- 分類選択肢 -->
                     <select name="classification" required>
                         <option value="" hidden></option>
@@ -53,10 +53,10 @@
                         <option value="その他">その他</option>
                     </select>
                 </td>
-                <td><input class="input" type="number" min="0" name="book_price"></td>
-                <td><input class="input" type="url" name="book_url"></td>
-                <td><input class="input" type="text" name="comment"></td>
-                <td>
+                <td class="short"><input class="input" type="number" min="0" name="book_price"></td>
+                <td class="long"><input class="input" type="url" name="book_url"></td>
+                <td class="long"><input class="input" type="text" name="comment"></td>
+                <td id="publishing_settings" class="long">
                     <input type="radio" name="publishing_settings" value="private" required>Private
                     <input type="radio" name="publishing_settings" value="public" required>Public
                 </td>

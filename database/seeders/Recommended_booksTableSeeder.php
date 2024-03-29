@@ -6,11 +6,11 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class Recommended_books2TableSeeder extends Seeder
+class Recommended_booksTableSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('recommended_books2')->insert([
+        DB::table('recommended_books')->insert([
             'book_name' => 'サンプル',
             'book_author' => '田中一郎',
             'book_publisher' => 'サンプル出版',
@@ -25,7 +25,7 @@ class Recommended_books2TableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('recommended_books2')->insert([
+        DB::table('recommended_books')->insert([
             'book_name' => 'サンプル2',
             'book_author' => '佐藤太郎',
             'book_publisher' => 'サンプル出版2',
@@ -40,7 +40,7 @@ class Recommended_books2TableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('recommended_books2')->insert([
+        DB::table('recommended_books')->insert([
             'book_name' => 'サンプル3',
             'book_author' => '佐々木智子',
             'book_publisher' => 'サンプル出版3',
@@ -55,7 +55,7 @@ class Recommended_books2TableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('recommended_books2')->insert([
+        DB::table('recommended_books')->insert([
             'book_name' => 'サンプル4',
             'book_author' => '鈴木久美子',
             'book_publisher' => 'サンプル出版4',
@@ -70,7 +70,7 @@ class Recommended_books2TableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('recommended_books2')->insert([
+        DB::table('recommended_books')->insert([
             'book_name' => 'サンプル5',
             'book_author' => '高橋敏夫',
             'book_publisher' => 'サンプル出版5',

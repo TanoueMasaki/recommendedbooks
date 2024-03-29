@@ -17,7 +17,7 @@ class RecommendedBook extends Model
 
     // タイムスタンプはなしで(Unknown column 'updated_at'が出ないように)
     // created_atとupdated_atが自動で入るようになっている為
-    public $timestamps = false;
+    // public $timestamps = false;
 
     use HasFactory;
 

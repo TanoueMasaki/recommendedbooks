@@ -1,26 +1,43 @@
-input{
-    width: 100%;
-}
-
 input.input{
     border: none;
+    width: 100%;
+    font-size: 12px;
+    padding: 5px 2px 0 2px;
+}
+
+#publishing_settings{
+    text-align: center;
+    width: 80px;
+}
+
+#classification{
+    text-align: center;
 }
 
 form select{
     border: none;
+    width: 100%;
+    font-size: 12px;
+    padding: 5px 1px 0 1px;
 }
 
 table.input_table{
     border: 1px solid black;
     margin: 0 auto;
-    width: 60%;
+    width: 90%;
 }
+table.input_table .long{
+   width: 150px;
+}
+table.input_table .short{
+    width: 100px;
+ }
 
 table.main_table{
     width: 100%;
 }
 table.main_table th,table.main_table td{
-    padding: 5px 5px 0 5px;
+    padding: 5px 1px 0 1px;
 }
 
 table.main_table td.center{
