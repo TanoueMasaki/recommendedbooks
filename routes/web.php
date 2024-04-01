@@ -35,7 +35,8 @@ Route::post('/userOnly/deleteOrUpdate',[MainController::class, 'deleteOrUpdate']
 ->middleware(['auth', 'verified'])->name('deleteOrUpdate');
 Route::post('/userOnly/remove',[MainController::class, 'remove'])
 ->middleware(['auth', 'verified'])->name('remove');
-
+Route::post('/userOnly/update',[MainController::class, 'update'])
+->middleware(['auth', 'verified'])->name('update');
 
 
 Route::middleware('auth')->group(function () {

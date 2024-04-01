@@ -6,6 +6,10 @@ use App\Models\RecommendedBook;
 use App\Models\RecommendedBook_view;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class MainController extends Controller
 {
@@ -128,6 +132,20 @@ class MainController extends Controller
         if($request->session()->has('checkedId')){
             $checkedId = $request->session()->get('checkedId');
             $items = RecommendedBook::whereIn('id', $checkedId)->delete();
+            // セッションの'checkedId'を消去する
+            $request->session()->forget('checkedId');
+        }
+            
+        return redirect()->route('privateGet');
+    }
+
+    // データの更新実行(UPDATE)
+    public function update(Request $request){
+        // セッションに'checkedId'があれば実行する
+        if($request->session()->has('checkedId')){
+            $checkedId = $request->session()->get('checkedId');
+            $items = RecommendedBook::whereIn('id', $checkedId)->fill($request->all())->save();
+
             // セッションの'checkedId'を消去する
             $request->session()->forget('checkedId');
         }

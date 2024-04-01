@@ -53,17 +53,45 @@
                 </tr>
                 @endforeach
             </tbody>
+            <tr>
+                <td></td>
+                <td class="long"><input class="input" type="text" name="book_name" required></td>
+                <td class="short"><input class="input" type="text" name="book_author" required></td>
+                <td class="short"><input class="input" type="text" name="book_publisher" required></td>
+                <td id="classification" class="short">
+                    <!-- 分類選択肢 -->
+                    <select name="classification" required>
+                        <option value="" hidden></option>
+                        <option value="コミック">コミック</option>
+                        <option value="絵本">絵本</option>
+                        <option value="女性ファッション誌">女性ファッション誌</option>
+                        <option value="同人誌">同人誌</option>
+                        <option value="名言集">名言集</option>
+                        <option value="音楽誌">音楽誌</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </td>
+                <td class="short"><input class="input" type="number" min="0" name="book_price"></td>
+                <td class="long"><input class="input" type="url" name="book_url"></td>
+                <td class="long"><input class="input" type="text" name="comment"></td>
+                <td></td>
+                <td></td>
+                <td id="publishing_settings" class="long">
+                    <input type="radio" name="publishing_settings" value="private" required>Private
+                    <input type="radio" name="publishing_settings" value="public" required>Public
+                </td>
+            </tr>
         </table>
     </div> 
     <!-- 削除実行 -->
     
         
     
-    <form action="/laravel/recommendedbooks/public/userOnly/remove" method="post">
+    <form action="/laravel/recommendedbooks/public/userOnly/update" method="post">
         @csrf
         
 
-        <input class="button" type="submit" name="bookDataRemove" value="削除を実行する">
+        <input class="button" type="submit" name="bookDataRemove" value="更新を実行する">
         
     </form>   
 </x-app-layout>
