@@ -3,7 +3,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-           ユーザー限定ページ
+        {{ Auth::user()->name }}さん専用ページ
         </h2>
     </x-slot>
 
@@ -11,7 +11,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    ここはユーザー限定のスペースです（サンプルページ）
+                    <p>ここは{{ Auth::user()->name }}さん専用のページです</p>
+                    <p>データの登録・閲覧・更新・削除が行えます</p>
                 </div>
             </div>
         </div>
@@ -26,21 +27,21 @@
         <input type="hidden" name="contributor_id" value=<?=Auth::user()->id ?>>
         <table class="input_table">
             <tr>
-                <th>タイトル</th>
-                <th>著者</th>
-                <th>出版社</th>
+                <th class="long">タイトル</th>
+                <th class="long">著者</th>
+                <th class="long">出版社</th>
                 <th>分類</th>
                 <th>価格</th>
                 <th>URL</th>
-                <th>コメント</th>
-                <th>公開設定</th>
+                <th class="long">コメント</th>
+                <th class="long">公開設定</th>
             </tr>
 
             <tr>
-                <td class="long"><input class="input" type="text" name="book_name" required></td>
-                <td class="short"><input class="input" type="text" name="book_author" required></td>
-                <td class="short"><input class="input" type="text" name="book_publisher" required></td>
-                <td id="classification" class="short">
+                <td class="long"><input type="text" name="book_name" required></td>
+                <td class="long"><input type="text" name="book_author" required></td>
+                <td class="long"><input type="text" name="book_publisher" required></td>
+                <td>
                     <!-- 分類選択肢 -->
                     <select name="classification" required>
                         <option value="" hidden></option>
@@ -53,12 +54,12 @@
                         <option value="その他">その他</option>
                     </select>
                 </td>
-                <td class="short"><input class="input" type="number" min="0" name="book_price"></td>
-                <td class="long"><input class="input" type="url" name="book_url"></td>
+                <td><input class="input" type="number" min="0" name="book_price"></td>
+                <td><input class="input" type="url" name="book_url"></td>
                 <td class="long"><input class="input" type="text" name="comment"></td>
-                <td id="publishing_settings" class="long">
-                    <input type="radio" name="publishing_settings" value="private" required>Private
-                    <input type="radio" name="publishing_settings" value="public" required>Public
+                <td  class="long">
+                    <input class="radio" type="radio" name="publishing_settings" value="private" required>Private
+                    <input class="radio" type="radio" name="publishing_settings" value="public" required>Public
                 </td>
             </tr>
         </table>
@@ -76,15 +77,15 @@
             <table class="main_table">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th>タイトル</th>
+                        <th class="short"></th>
+                        <th class="short"></th>
+                        <th class="long">タイトル</th>
                         <th>著者</th>
-                        <th>出版社</th>
+                        <th class="long">出版社</th>
                         <th>分類</th>
                         <th>価格</th>
                         <th>URL</th>
-                        <th>コメント</th>
+                        <th class="long">コメント</th>
                         <th>投稿日</th>
                         <th>投稿時間</th>
                         <th>公開設定</th>
@@ -94,10 +95,10 @@
                 @foreach($items as $item)
                 <tbody>
                     <tr>
-                        <td><input type="checkbox" name="checkedId[]" value=<?=$item->id?> ></td>
+                        <td class="short"><input type="checkbox" name="checkedId[]" value=<?=$item->id?> ></td>
 
                         <!-- 分類ごとにイメージを決定する -->
-                        <td class="center">
+                        <td>
                             <?php $imageNum; 
                                 switch($item->classification){
                                     case "その他":
@@ -126,23 +127,23 @@
                             <img id="image" src=<?=$images[$imageNum]?> alt="image">
                         </td>
 
-                        <td class="middle">{{$item->book_name}}</td>
-                        <td class="center">{{$item->book_author}}</td>
-                        <td class="middle">{{$item->book_publisher}}</td>
-                        <td class="center">{{$item->classification}}</td>
-                        <td class="center">{{$item->book_price}}円</td>
+                        <td class="long">{{$item->book_name}}</td>
+                        <td>{{$item->book_author}}</td>
+                        <td class="long">{{$item->book_publisher}}</td>
+                        <td>{{$item->classification}}</td>
+                        <td>{{$item->book_price}}円</td>
 
                         <!-- URLが未入力なら空白にする -->
                         @if($item->book_url === null)
                             <td></td>
                             @else
-                            <td class="center"><a href=<?=$item->book_url ?> target="_top">link</a></td>
+                            <td><a href=<?=$item->book_url ?> target="_top">link</a></td>
                         @endif
                     
-                        <td class="middle">{{$item->comment}}</td>
-                        <td class="center">{{$item->post_date}}</td>
-                        <td class="center">{{$item->post_time}}</td>
-                        <td class="center">{{$item->publishing_settings}}</td>
+                        <td class="long">{{$item->comment}}</td>
+                        <td>{{$item->post_date}}</td>
+                        <td>{{$item->post_time}}</td>
+                        <td>{{$item->publishing_settings}}</td>
                     </tr>
                     @endforeach
                 </tbody>
