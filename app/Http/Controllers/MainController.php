@@ -141,15 +141,35 @@ class MainController extends Controller
 
     // データの更新実行(UPDATE)
     public function update(Request $request){
+            
+            $checkedId = $request->session()->get('checkedId');
+            $items = RecommendedBook::find($request->id);
+
+            $items->book_name = $request->book_name;
+            $items->book_author = $request->book_author;
+            $items->book_publisher = $request->book_publisher;
+            $items->book_price = $request->book_price;
+            $items->book_url = $request->book_url;
+            $items->comment = $request->comment;
+            $items->publishing_settings = $request->publishing_settings;
+                // "post_date" = date("Y-m-d"),
+                // "post_time" = date("H:i:s"),
+                // "contributor_id" =  $request-> contributor_id,
+            $items->classification = $request->classification;  
+            $items->save();
+            
+            $items = RecommendedBook_view::all()->whereIn('id', $checkedId);
+            return view('userOnly.update')
+            ->with([
+                "items" => $items
+            ]);
+    }
+    public function updateEnd(Request $request){
         // セッションに'checkedId'があれば実行する
         if($request->session()->has('checkedId')){
-            $checkedId = $request->session()->get('checkedId');
-            $items = RecommendedBook::whereIn('id', $checkedId)->fill($request->all())->save();
-
             // セッションの'checkedId'を消去する
             $request->session()->forget('checkedId');
         }
-            
         return redirect()->route('privateGet');
     }
 }

@@ -95,9 +95,6 @@
     
     <form action="/laravel/recommendedbooks/public/userOnly/remove" method="post">
         @csrf
-        
-
         <input class="button" type="submit" name="bookDataRemove" value="削除を実行する">
-        
     </form>   
 </x-app-layout>

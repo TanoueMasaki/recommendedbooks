@@ -4,8 +4,10 @@ div.scroll_table{
     width: 80%;
     max-height: 500px;
     overflow:auto;
-    
-    
+}
+p.red{
+    color: #ff7f7f;
+    font-weight:bold;
 }
 /* メインテーブル */
 table.main_table{
@@ -105,11 +107,28 @@ input.button:hover{
     color: #cbcbcb;
     transition: .3s;
 }
-td.none,th.none{
-    border-top: 1px solid rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(255, 255, 255);
-    border-left: 1px solid rgb(255, 255, 255);
-    /* background-color: #f0f8cb; */
+table.main_table td.none,
+table.main_table th.none,
+table.input_table td.none{
+    border-top: 1px solid rgb(243,244,246);
+    border-bottom: 1px solid rgb(243,244,246);
+    border-left: 1px solid rgb(243,244,246);
+    background-color: rgb(243,244,246);
+}
+input.endButton{
+    width: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px 5px 3px 5px;
+    border-radius: 20%;
+    background: #ffacac;
+    color: #464545;
+    font-weight:bold;
+}
+input.endButton:hover{
+    background-color: #946e6e;
+    color: #cbcbcb;
+    transition: .3s;
 }
 
 
