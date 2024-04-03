@@ -79,6 +79,22 @@ div.scroll_table{
 form{
     text-align: center;
 }
+/* エラーメッセージ */
+#errorMessage{
+    width: fit-content;
+    margin: 0 auto;
+    color: #ff6060;
+    font-weight:bold;
+    font-size: 24px;
+}
+.errors{
+    color: #ff6060;
+    font-weight:bold;
+    font-size: 24px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+}
 /* メインテーブル */
 table.main_table{
     width: 100%;

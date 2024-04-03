@@ -16,7 +16,8 @@ class MainController extends Controller
     // 一覧表示（view）
     public function publicGet(Request $request){
         // $items = RecommendedBook_view::contributorId($request->user()->id)->get();
-        $items = RecommendedBook_view::publishingSet()->get();
+        // $items = RecommendedBook_view::publishingSet()->get()->paginate(1);
+        $items = RecommendedBook_view::publishingSet()->paginate(3);
 
         return view('dashboard')
         ->with([
@@ -52,9 +53,15 @@ class MainController extends Controller
     // データの追加(INSERT)
     public function privateGetPost(Request $request){
 
-        // if($request->book_name==="" || !isset($_book_name) || $request->book_name===null){
-        //     exit;
-        // }
+        // バリデーションチェック
+        $input = $request->validate([
+            "book_name" => 'required | string',
+            "book_author" => 'required | string',
+            "book_publisher" => 'required | string',
+            "book_price" => 'integer | min:0',
+            "classification" => 'required | string',
+            "publishing_settings" => 'required | string'
+        ]);
 
         RecommendedBook::create([  
             "book_name" => $request->book_name,
@@ -141,6 +148,19 @@ class MainController extends Controller
 
     // データの更新実行(UPDATE)
     public function update(Request $request){
+
+        // バリデーションチェック
+        $input = $request->validate([
+            "book_name" => 'required | string | max:50',
+            "book_author" => 'required | string | max:10',
+            "book_publisher" => 'required | string | max:50',
+            "book_price" => 'integer | min:0',
+            "book_url" => 'string | max:200',
+            "comment" => 'max:200',
+            "classification" => 'required | string',
+            "publishing_settings" => 'required | string'
+        ]);
+        
             
             $checkedId = $request->session()->get('checkedId');
             $items = RecommendedBook::find($request->id);

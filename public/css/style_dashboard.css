@@ -9,3 +9,7 @@ table td {
     border-collapse: collapse;
     padding: 5px 10px 0 10px;
 }
+.paginate{
+    width: fit-content;
+    margin: 0 auto;
+}

@@ -11,12 +11,55 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+                    {{ __("You're logged in!") }}<br>
+                    {{ Auth::user()->name }}さんこんにちは！<br>
+                    このページでは全てのユーザーが登録したpublicデータを閲覧することが出来ます。<br>
+                    データの登録や修正等はユーザー専用ページで行って下さい。
                 </div>
             </div>
         </div>
     </div>
     <table>
+        <tr>
+            <form action="/laravel/recommendedbooks/public/userOnly" method="post">
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+                <td>
+                    <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
+                    <input class="button" type="submit" name="descendingOrderTitle" value="降順">
+                </td>
+            </form>
+        </tr>
 		<tr>
             <th>投稿者</th>
 			<th>タイトル</th>
@@ -49,5 +92,6 @@
 		</tr>
         @endforeach
 	</table>
+    <p class="paginate">{{$items->links()}}</p>
     
 </x-app-layout>

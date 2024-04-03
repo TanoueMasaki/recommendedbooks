@@ -18,6 +18,18 @@
         </div>
     </div>
 
+    <!-- バリデーションチェックエラーがあれば表示 -->
+    @if($errors->any())
+    <div  class="errors">
+        <p>※不正な入力があります※</p>
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <form action="/laravel/recommendedbooks/public/userOnly" method="post">
         <!-- これいる -->
         <!-- {{ csrf_field() }} -->
@@ -38,12 +50,12 @@
             </tr>
 
             <tr>
-                <td class="long"><input type="text" name="book_name" required></td>
-                <td class="long"><input type="text" name="book_author" required></td>
-                <td class="long"><input type="text" name="book_publisher" required></td>
+                <td class="long"><input type="text" name="book_name" value="{{old('book_name')}}" required></td>
+                <td class="long"><input type="text" name="book_author" value="{{old('book_author')}}" required></td>
+                <td class="long"><input type="text" name="book_publisher" value="{{old('book_publisher')}}" required></td>
                 <td>
                     <!-- 分類選択肢 -->
-                    <select name="classification" required>
+                    <select name="classification" value="{{old('classification')}}" required>
                         <option value="" hidden></option>
                         <option value="コミック">コミック</option>
                         <option value="絵本">絵本</option>
@@ -54,9 +66,9 @@
                         <option value="その他">その他</option>
                     </select>
                 </td>
-                <td><input class="input" type="number" min="0" name="book_price"></td>
-                <td><input class="input" type="url" name="book_url"></td>
-                <td class="long"><input class="input" type="text" name="comment"></td>
+                <td><input class="input" type="number" min="0" name="book_price" value="{{old('book_price',0)}}"></td>
+                <td><input class="input" type="url" name="book_url" value="{{old('book_url')}}"></td>
+                <td class="long"><input class="input" type="text" name="comment" value="{{old('comment')}}"></td>
                 <td  class="long">
                     <input class="radio" type="radio" name="publishing_settings" value="private" required>Private
                     <input class="radio" type="radio" name="publishing_settings" value="public" required>Public
@@ -71,10 +83,12 @@
     @else
     <p id="errorMessage">{{session('errorMessage')}}</p>
     @endif
+    
     <form action="/laravel/recommendedbooks/public/userOnly/deleteOrUpdate" method="post">
         @csrf
         <div class="scroll_table">
             <table class="main_table">
+                
                 <thead>
                     <tr>
                         <th class="short"></th>
