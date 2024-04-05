@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=yes">
 		<meta charset="utf-8">
         <!-- {{asset('パス')}}が必要 -->
-		<link rel="stylesheet" href="{{ asset('/css/reset.css')  }}">
+		<!-- <link rel="stylesheet" href="{{ asset('/css/reset.css')  }}"> -->
 		<link rel="stylesheet" href="{{ asset('/css/welcome.css')  }}">
 		<!-- <script src="js/functions.js"></script> -->
 		<title>masaki,s portfolio</title>
