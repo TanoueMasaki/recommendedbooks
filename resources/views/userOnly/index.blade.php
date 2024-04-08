@@ -30,7 +30,7 @@
     </div>
     @endif
 
-    <form action="/laravel/recommendedbooks/public/userOnly" method="post">
+    <form action="/recommendedbooks/public/userOnly" method="post">
         <!-- これいる -->
         <!-- {{ csrf_field() }} -->
         @csrf
@@ -84,7 +84,7 @@
     <p id="errorMessage">{{session('errorMessage')}}</p>
     @endif
     
-    <form action="/laravel/recommendedbooks/public/userOnly/deleteOrUpdate" method="post">
+    <form action="/recommendedbooks/public/userOnly/deleteOrUpdate" method="post">
         @csrf
         <div class="scroll_table">
             <table class="main_table">

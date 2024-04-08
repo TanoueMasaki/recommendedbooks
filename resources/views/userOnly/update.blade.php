@@ -69,7 +69,7 @@
             </table>
             <!-- input_table -->
             
-            <form action="/laravel/recommendedbooks/public/userOnly/update" method="post">
+            <form action="/recommendedbooks/public/userOnly/update" method="post">
                 @csrf
                 <table class="input_table">
                     <tr>

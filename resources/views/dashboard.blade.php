@@ -21,7 +21,7 @@
     </div>
     <table>
         <tr>
-            <form action="/laravel/recommendedbooks/public/userOnly" method="post">
+            <form action="/recommendedbooks/public/userOnly" method="post">
                 <td>
                     <input class="button" type="submit" name="ascendingOrderTitle" value="昇順">
                     <input class="button" type="submit" name="descendingOrderTitle" value="降順">
